@@ -25,7 +25,7 @@ model = pickle.load(open("fraud_model.pkl", "rb"))
 st.markdown("""
 <style>
 
-/* Main App */
+/* Main Background */
 .stApp {
     background-color: black;
     color: white;
@@ -53,7 +53,7 @@ h1, h2, h3 {
     text-align: center;
 }
 
-/* Buttons */
+/* Button */
 .stButton>button {
     background-color: red;
     color: white;
@@ -70,7 +70,7 @@ h1, h2, h3 {
     color: white;
 }
 
-/* Input box text */
+/* Input text */
 .stNumberInput input {
     color: black !important;
 }
@@ -97,7 +97,7 @@ st.write("")
 
 st.sidebar.header("💳 Transaction Details")
 
-# Time and Amount
+# User Inputs
 time = st.sidebar.number_input(
     "Transaction Time",
     min_value=0.0,
@@ -110,15 +110,8 @@ amount = st.sidebar.number_input(
     value=100.0
 )
 
-# V1 to V28 Inputs
-features = []
-
-for i in range(1, 29):
-    value = st.sidebar.number_input(
-        f"V{i}",
-        value=0.0
-    )
-    features.append(value)
+# Auto-filled hidden features (V1 to V28)
+features = [0.0] * 28
 
 # =========================
 # INPUT ARRAY
