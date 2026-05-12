@@ -70,11 +70,6 @@ h1, h2, h3 {
     color: white;
 }
 
-/* Metric */
-[data-testid="stMetricValue"] {
-    color: white;
-}
-
 /* Input box text */
 .stNumberInput input {
     color: black !important;
@@ -102,35 +97,37 @@ st.write("")
 
 st.sidebar.header("💳 Transaction Details")
 
-amount = st.sidebar.number_input(
-    "Transaction Amount",
-    min_value=0.0,
-    value=100.0
-)
-
+# Time and Amount
 time = st.sidebar.number_input(
     "Transaction Time",
     min_value=0.0,
     value=1000.0
 )
 
-# Dummy Features
-v1 = st.sidebar.number_input("V1", value=0.0)
-v2 = st.sidebar.number_input("V2", value=0.0)
-v3 = st.sidebar.number_input("V3", value=0.0)
-v4 = st.sidebar.number_input("V4", value=0.0)
+amount = st.sidebar.number_input(
+    "Transaction Amount",
+    min_value=0.0,
+    value=100.0
+)
+
+# V1 to V28 Inputs
+features = []
+
+for i in range(1, 29):
+    value = st.sidebar.number_input(
+        f"V{i}",
+        value=0.0
+    )
+    features.append(value)
 
 # =========================
 # INPUT ARRAY
 # =========================
 
 input_data = np.array([[
-    amount,
     time,
-    v1,
-    v2,
-    v3,
-    v4
+    *features,
+    amount
 ]])
 
 # =========================
