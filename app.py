@@ -124,13 +124,19 @@ v4 = st.sidebar.number_input("V4", value=0.0)
 # INPUT ARRAY
 # =========================
 
+amount = st.number_input("Transaction Amount")
+time = st.number_input("Transaction Time")
+v1 = st.number_input("V1")
+v2 = st.number_input("V2")
+v3 = st.number_input("V3")
+v4 = st.number_input("V4")
 input_data = np.array([[
+    amount,
     time,
     v1,
     v2,
     v3,
-    v4,
-    amount
+    v4
 ]])
 
 # =========================
